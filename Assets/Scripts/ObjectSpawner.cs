@@ -1,24 +1,62 @@
-using System;
-using System.Threading;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-
 public class ObjectSpawner : MonoBehaviour
 {
+    //objectPool Food
+    public int FoodPoolSize = 10;
+    public GameObject FoodPrefab;
+    private List<GameObject> FoodPool = new List<GameObject>();
+    
+    //objectPool Poop
+    public int PoopPoolSize = 10;
+    public GameObject PoopPrefab;
+    private List<GameObject> PoopPool = new List<GameObject>();
+    //Listleri doldurduðumuz kýsým
+    private void Start()
+    {
+        for (int i = 0; i < FoodPoolSize; i++)
+        {
+            GameObject obj = Instantiate(FoodPrefab);
+            obj.SetActive(false);
+            FoodPool.Add(obj);
+        }
+        for(int i = 0;i < PoopPoolSize; i++)
+        {
+            GameObject obj = Instantiate(PoopPrefab);
+            obj.SetActive(false);
+            PoopPool.Add(obj);
+        }
+    }
+
+    //Get fonksiyonumuz
+    GameObject GetObect(List<GameObject> pool , GameObject prefab)
+    {
+        foreach (GameObject obj in pool) {
+            if (!obj.activeInHierarchy)
+            {
+                obj.SetActive(true);
+                return obj;
+            }
+            
+        }
+        GameObject newGameObject = Instantiate(prefab);
+        newGameObject.SetActive(true);
+        pool.Add(newGameObject);
+        return newGameObject;
+     }
+
     // Aslýnda daha sonradan düþündüðümde bu metodun gereksiz olduðunu düþündüm ama silmedim
     public float RndNumberCreater ( float number1 = -9.2f , float number2 = 9.2f)
     {
         return UnityEngine.Random.Range(number1 , number2);
     }
-    
+
+    //zaman ayarlarý
     float time = 0f;
     float time2 = 0f;
 
     // spawnerý kapatan bool deðiþkeni
     public bool OnOff = true;
-
-    public GameObject foods;
-    public GameObject poops;
 
     // Gameobjectlerin position deðerini tutan vectorler
     Vector3 foods_position = new Vector3(0f,7f,0f);
@@ -33,17 +71,20 @@ public class ObjectSpawner : MonoBehaviour
             if (time >= UnityEngine.Random.Range(1f,2f))
             {
                 foods_position.x = RndNumberCreater();
-                Instantiate(foods, foods_position , Quaternion.identity);
+                GameObject obj = GetObect(FoodPool,FoodPrefab);
+                obj.transform.position = foods_position;
                 time = 0f;
             }
             if(time2 >= UnityEngine.Random.Range(1f, 2f))
             {
                 poops_position.x = RndNumberCreater();
-                Instantiate(poops, poops_position , Quaternion.identity);
+                GameObject obj2 = GetObect(PoopPool,PoopPrefab);
+                obj2.transform.position = poops_position;
                 time2 = 0f;
             }
 
         }
+        
     }
 
 }

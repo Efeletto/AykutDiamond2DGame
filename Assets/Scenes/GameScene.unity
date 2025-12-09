@@ -846,9 +846,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd49f44b8f8a1b498b7305ef11691d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectSpawner
+  FoodPoolSize: 5
+  FoodPrefab: {fileID: 8374809569008104511, guid: 2a50680f147bf8242967213e6d2ad142, type: 3}
+  PoopPoolSize: 5
+  PoopPrefab: {fileID: 8356631660578251303, guid: 744895312b463f54998949061ea433dd, type: 3}
   OnOff: 1
-  foods: {fileID: 8374809569008104511, guid: 2a50680f147bf8242967213e6d2ad142, type: 3}
-  poops: {fileID: 8356631660578251303, guid: 744895312b463f54998949061ea433dd, type: 3}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

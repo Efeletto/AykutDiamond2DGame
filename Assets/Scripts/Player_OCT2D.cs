@@ -10,7 +10,7 @@ public class Player_OCT2D : MonoBehaviour
     {
         // Yemek ile olan collision
         if(collision.gameObject.CompareTag("Yemek")) { 
-        Destroy(collision.gameObject);
+        collision.gameObject.SetActive(false);
         score++;
         MyText.text = $"Score : {score}";
         }
@@ -18,7 +18,7 @@ public class Player_OCT2D : MonoBehaviour
         // Bok ile olan collision
         if(collision.gameObject.tag == "Bok")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 

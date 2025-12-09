@@ -5,7 +5,7 @@ public class PlayerHealthManager : MonoBehaviour
 {
     public TextMeshProUGUI GameOverTMP;
     public TextMeshProUGUI canTMP;
-     int health = 3;
+    private int health = 3;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bok")) {  

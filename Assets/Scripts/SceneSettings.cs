@@ -9,6 +9,7 @@ public class SceneSettings : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1f;
     }
     public void openSettingsPanel()
     {

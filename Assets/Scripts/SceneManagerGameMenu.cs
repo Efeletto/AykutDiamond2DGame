@@ -3,9 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerGameMenu : MonoBehaviour
 {
+    public Canvas DeadCanvas;
     public Canvas EscCanvas;
+    public bool isDead = true;
+
+    //Esc Canvas Ayarlarý
     public void RetryGame()
     {
+        // Ayný butonu öldükten sonra gelen retry butonunda da kullandým
         SceneManager.LoadScene("GameScene");
         Time.timeScale = 1f;
     }
@@ -17,6 +22,8 @@ public class SceneManagerGameMenu : MonoBehaviour
     }
     public void ExitGame()
     {
+        // Ayný butonu öldükten sonra gelen exit butonunda da kullandým
         SceneManager.LoadScene("MainMenuScene");
     }
+
 }

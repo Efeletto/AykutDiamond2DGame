@@ -5,7 +5,7 @@ public class SceneSettings : MonoBehaviour
 {
     public GameObject panelSettings;
 
-
+   
     public void StartGame()
     {
         SceneManager.LoadScene("GameScene");

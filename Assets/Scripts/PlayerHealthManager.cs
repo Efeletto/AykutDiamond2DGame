@@ -1,8 +1,17 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class PlayerHealthManager : MonoBehaviour
 {
+    public SoundsSettings snd;
+    private SpriteRenderer sr;
+    private Color originColor;
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        originColor = sr.color;
+    }
     // ...
     public SceneManagerGameMenu gameMenu;
 
@@ -17,16 +26,28 @@ public class PlayerHealthManager : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bok")) {  
+        if (collision.gameObject.CompareTag("Bok")) {
+            StartCoroutine(FlashRed());
             health--;
             canTMP.text = $"Can : {health}";
             if (health == 0) {
+                
+                snd.playPart();
                 Time.timeScale = 0f;
                 // ölünce esc canvasý açýlmamasý için bool deðiþken ile kontrol ediyoruz
                 gameMenu.isDead = false;
                 cnvs.gameObject.SetActive(true);
-                Debug.Log("öldün yarra yedin !!! ");           
+                Debug.Log("öldün yarra yedin !!! ");
+
             }
         }
     }
+
+    IEnumerator FlashRed()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.15f);
+        sr.color = originColor;
+    }
+
 }

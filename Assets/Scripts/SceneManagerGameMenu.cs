@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerGameMenu : MonoBehaviour
 {
-    public Canvas DeadCanvas;
     public Canvas EscCanvas;
     public bool isDead = true;
 

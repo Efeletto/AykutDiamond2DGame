@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPrefers : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Slider volumeSlider;
+    
     void Start()
     {
-        
+        volumeSlider.value = PlayerPrefs.GetFloat("DeathSound", 1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnSliderChanged()
     {
-        
+        PlayerPrefs.SetFloat("DeathSound",volumeSlider.value);
     }
+
 }

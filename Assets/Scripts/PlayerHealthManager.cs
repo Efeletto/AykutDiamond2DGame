@@ -31,13 +31,16 @@ public class PlayerHealthManager : MonoBehaviour
             health--;
             canTMP.text = $"Can : {health}";
             if (health == 0) {
-                
+                if(PlayerPrefs.GetInt("HighScore",0) < Player_OCT2D.score)
+                {
+                    PlayerPrefs.SetInt("HighScore", Player_OCT2D.score);
+                }
                 snd.playPart();
                 Time.timeScale = 0f;
                 // ölünce esc canvasý açýlmamasý için bool deðiþken ile kontrol ediyoruz
                 gameMenu.isDead = false;
                 cnvs.gameObject.SetActive(true);
-                Debug.Log("öldün yarra yedin !!! ");
+                Debug.Log("You Died!! Game Over!!");
 
             }
         }

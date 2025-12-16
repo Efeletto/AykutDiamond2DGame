@@ -1,9 +1,10 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 public class Player_OCT2D : MonoBehaviour
 {
 
-    int score = 0;
+    public static int score = 0;
     public TextMeshProUGUI MyText;
     
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1,7 +1,15 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
+    // Zorluðu zamanla arttýrmak için ayrý bir time deðiþkeni
+    float timeDifficulty = 0f;
+    float altLimit = 2f;
+    float ustLimit = 3f;
+    int sayac = 1;
+
     //objectPool Food
     public int FoodPoolSize = 10;
     public GameObject FoodPrefab;
@@ -28,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    //Get fonksiyonumuz
+    //objectPool'dan obje çekem ve eðer yeterli sayýda object yoksa yeni obje üreten fonksiyonumuz
     GameObject GetObect(List<GameObject> pool , GameObject prefab)
     {
         foreach (GameObject obj in pool) {
@@ -65,17 +73,19 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Update()
     {
+        timeDifficulty += Time.deltaTime;
+        difficultChanger();
         if (OnOff) {
           time += Time.deltaTime;
           time2 += Time.deltaTime;
-            if (time >= UnityEngine.Random.Range(1f,2f))
+            if (time >= UnityEngine.Random.Range(altLimit, ustLimit))
             {
                 foods_position.x = RndNumberCreater();
                 GameObject obj = GetObect(FoodPool,FoodPrefab);
                 obj.transform.position = foods_position;
                 time = 0f;
             }
-            if(time2 >= UnityEngine.Random.Range(1f, 2f))
+            if(time2 >= UnityEngine.Random.Range(altLimit + 0.2f,ustLimit + 0.2f))
             {
                 poops_position.x = RndNumberCreater();
                 GameObject obj2 = GetObect(PoopPool,PoopPrefab);
@@ -87,4 +97,20 @@ public class ObjectSpawner : MonoBehaviour
         
     }
 
+    void difficultChanger()
+    {
+        if(altLimit >= 0.6f)
+        {
+            if (sayac <= Mathf.FloorToInt(timeDifficulty / 60))
+            {
+                sayac++;
+                altLimit -= 0.2f;
+                ustLimit -= 0.2f;
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
 }

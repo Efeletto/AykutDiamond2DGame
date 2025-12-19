@@ -10,20 +10,23 @@ public class SceneSettings : MonoBehaviour
         HighScore.text = $"High Score : {PlayerPrefs.GetInt("HighScore",0)}";
     }
 
-    private void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadScene("GameScene");
         Time.timeScale = 1f;
     }
-    private void openSettingsPanel()
+    public void openCloseSettingsPanel()
     {
-        panelSettings.SetActive(true);
+        if (panelSettings.activeInHierarchy)
+        {
+            panelSettings.SetActive(false);
+        }
+        else {
+            panelSettings.SetActive(true);
+        }
     }
-    private void closeSettingsPanel()
-    {
-        panelSettings.SetActive(false);
-    }
-    private void QuitGame()
+
+    public void QuitGame()
     {
         Application.Quit();
     }

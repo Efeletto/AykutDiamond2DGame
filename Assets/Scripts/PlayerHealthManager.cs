@@ -35,7 +35,7 @@ public class PlayerHealthManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("HighScore", Player_OCT2D.score);
                 }
-                snd.playPart();
+                snd.playRandomClip();
                 Time.timeScale = 0f;
                 // ölünce esc canvasý açýlmamasý için bool deðiþken ile kontrol ediyoruz
                 gameMenu.isDead = false;

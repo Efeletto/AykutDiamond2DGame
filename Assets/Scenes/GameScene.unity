@@ -1042,7 +1042,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.3826937, g: 0.24603951, b: 0.5377358, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1142,7 +1142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a576ecbcd522a549b702633c737339d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneManagerGameMenu
-  DeadCanvas: {fileID: 0}
   EscCanvas: {fileID: 1235515997}
   isDead: 1
 --- !u!82 &519420037
@@ -1156,7 +1155,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: e30678f648a97904cae9934fe05efbe4, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1255,6 +1254,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioSettings
   audioSource: {fileID: 519420037}
+  deathSounds:
+  - {fileID: 8300000, guid: e30678f648a97904cae9934fe05efbe4, type: 3}
+  - {fileID: 8300000, guid: 2041efb3132098642881d018daeea2e5, type: 3}
+  - {fileID: 8300000, guid: d173f99177fb57e46bebe24056034329, type: 3}
+  - {fileID: 8300000, guid: 30aef236b841b0946a4f846912923326, type: 3}
+  - {fileID: 8300000, guid: 1e1d1288347a0cc49844ced317f00094, type: 3}
+  - {fileID: 8300000, guid: 9a7c4afea1946b84a9590bdbbf151621, type: 3}
+  - {fileID: 8300000, guid: 71f24d429703e6b45a4b0434d647fe31, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2137,7 @@ GameObject:
   - component: {fileID: 1231417322}
   - component: {fileID: 1231417321}
   m_Layer: 5
-  m_Name: "\xD6ld\xFCn Yarra Yedin !!!"
+  m_Name: Kaybettin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2152,7 +2159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.1, y: 66}
+  m_AnchoredPosition: {x: 70.97, y: 66}
   m_SizeDelta: {x: 324.11, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1231417321
@@ -2175,7 +2182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xD6ld\xFCn Yarra Yedin!!!"
+  m_text: "KAYBETT\u0130N!!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

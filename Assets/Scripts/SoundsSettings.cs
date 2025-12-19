@@ -2,30 +2,58 @@ using System.Collections;
 using UnityEngine;
 
 public class SoundsSettings : MonoBehaviour
-{ 
-
+{
     public AudioSource audioSource;
+    public AudioClip[] deathSounds;
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat("DeathSound", 1f);
-        audioSource.loop = false;
+        audioSource.volume = PlayerPrefs.GetFloat("DeathSound", 0.5f);
     }
 
-    public void playPart()
+    public void playRandomClip()
     {
-        if (!audioSource.isPlaying)
+        int randomIndexOfClip = Random.Range(0, deathSounds.Length);
+        audioSource.clip = deathSounds[randomIndexOfClip];
+        switch (randomIndexOfClip)
         {
-            StartCoroutine(PlayPart());
+            case 0:
+                StartCoroutine(playPartOfClip(0.7f, 1.2f));
+                break;
+
+            case 1:
+                audioSource.Play();
+                break;
+
+            case 2:
+                audioSource.Play();
+                break;
+
+            case 3:
+                audioSource.Play();
+                break;
+
+            case 4:
+                audioSource.Play();
+                break;
+
+            case 5:
+                audioSource.Play();
+                break;
+            case 6:
+                StartCoroutine(playPartOfClip(1.1f, 2.4f));
+                break;
         }
+       //  Debug.Log($"{randomIndexOfClip}");
+
     }
-    IEnumerator PlayPart()
+
+    System.Collections.IEnumerator playPartOfClip(float startTime, float durationTime)
     {
-        audioSource.Stop();
-        audioSource.time = 0.7f;
+        audioSource.time = startTime;
         audioSource.Play();
-        yield return new WaitForSecondsRealtime(1.2f);
+        yield return new WaitForSecondsRealtime(durationTime);
         audioSource.Stop();
     }
+    
 }

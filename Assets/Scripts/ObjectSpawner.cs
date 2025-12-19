@@ -6,8 +6,8 @@ public class ObjectSpawner : MonoBehaviour
 {
     // Zorluðu zamanla arttýrmak için ayrý bir time deðiþkeni
     float timeDifficulty = 0f;
-    float altLimit = 2f;
-    float ustLimit = 3f;
+    float altLimit = 1.4f;
+    float ustLimit = 2.4f;
     int sayac = 1;
 
     //objectPool Food
@@ -99,13 +99,14 @@ public class ObjectSpawner : MonoBehaviour
 
     void difficultChanger()
     {
-        if(altLimit >= 0.6f)
+        if (altLimit > 0.6f)
         {
-            if (sayac <= Mathf.FloorToInt(timeDifficulty / 60))
+            if (sayac <= Mathf.FloorToInt(timeDifficulty / 10))
             {
-                sayac++;
-                altLimit -= 0.2f;
-                ustLimit -= 0.2f;
+                sayac += 1;
+                altLimit -= 0.1f;
+                ustLimit -= 0.1f;
+                //  Debug.Log($"Alt : {altLimit}   Ust : {ustLimit}");
             }
         }
         else

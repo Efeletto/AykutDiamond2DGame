@@ -6,7 +6,10 @@ public class Timer : MonoBehaviour
     float elapsedTime = 0f;
     public TextMeshProUGUI TimeText;
     public Canvas EscCanvas;
-    
+    private void OnEnable()
+    {
+        elapsedTime = 0f;
+    }
     public void Update()
     {
         //Esc ile UI elementini getirme

@@ -12,8 +12,7 @@ public class SceneSettings : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
-        Time.timeScale = 1f;
+        StartCoroutine(waitSecondsBeforeLoad());
     }
     public void openCloseSettingsPanel()
     {
@@ -31,5 +30,10 @@ public class SceneSettings : MonoBehaviour
         Application.Quit();
     }
 
-
+    System.Collections.IEnumerator waitSecondsBeforeLoad(float seconds = 0.1f)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1f;
+    }
 }

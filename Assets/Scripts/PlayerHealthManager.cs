@@ -49,7 +49,7 @@ public class PlayerHealthManager : MonoBehaviour
     IEnumerator FlashRed()
     {
         sr.color = Color.red;
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.075f);
         sr.color = originColor;
     }
 

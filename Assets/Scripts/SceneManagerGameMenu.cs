@@ -22,7 +22,8 @@ public class SceneManagerGameMenu : MonoBehaviour
     public void ExitGame()
     {
         // Ayný butonu öldükten sonra gelen exit butonunda da kullandým
-        SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene("MainMenuScene"); 
+        Time.timeScale = 1f;
     }
 
 }

@@ -23,15 +23,15 @@ public class PlayerHealthManager : MonoBehaviour
 
     //ölünce gelecek olan canvas
     public Canvas cnvs;
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bok")) {
-            StartCoroutine(FlashRed());
+            StartCoroutine(FlashColor(Color.softRed));
             health--;
             canTMP.text = $"Can : {health}";
             if (health == 0) {
-                if(PlayerPrefs.GetInt("HighScore",0) < Player_OCT2D.score)
+                if (PlayerPrefs.GetInt("HighScore", 0) < Player_OCT2D.score)
                 {
                     PlayerPrefs.SetInt("HighScore", Player_OCT2D.score);
                 }
@@ -44,12 +44,17 @@ public class PlayerHealthManager : MonoBehaviour
 
             }
         }
+        else if(collision.gameObject.CompareTag("Yemek"))
+        {
+            StartCoroutine(FlashColor(Color.softGreen));
+
+        }
     }
 
-    IEnumerator FlashRed()
+    IEnumerator FlashColor(Color clr)
     {
-        sr.color = Color.red;
-        yield return new WaitForSeconds(0.075f);
+        sr.color = clr;
+        yield return new WaitForSecondsRealtime(0.075f);
         sr.color = originColor;
     }
 

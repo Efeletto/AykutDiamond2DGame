@@ -13,12 +13,12 @@ public class ObjectSpawner : MonoBehaviour
     //objectPool Food
     public int FoodPoolSize = 10;
     public GameObject FoodPrefab;
-    private List<GameObject> FoodPool = new List<GameObject>();
+    private List<GameObject> FoodPool = new();
     
     //objectPool Poop
     public int PoopPoolSize = 10;
     public GameObject PoopPrefab;
-    private List<GameObject> PoopPool = new List<GameObject>();
+    private List<GameObject> PoopPool = new();
     //Listleri doldurduðumuz kýsým
     private void Start()
     {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIplayBtnAnim : MonoBehaviour , 
     IPointerEnterHandler,
@@ -7,12 +8,14 @@ public class UIplayBtnAnim : MonoBehaviour ,
     IPointerDownHandler,
     IPointerUpHandler
 {
-
-    Animator anim;
+    [SerializeField] private ColorBlock colorBlock;
+    [SerializeField] private Animator anim;
+    [SerializeField] private Button myBtn;
     private void Awake()
     {
         // Butondaki animator component'i aldýk
         anim = GetComponent<Animator>();
+        myBtn = GetComponent<Button>();
     }
     private void OnEnable()
     {
@@ -27,6 +30,7 @@ public class UIplayBtnAnim : MonoBehaviour ,
     public void OnPointerExit(PointerEventData eventData) {
         //Pointer button'un üzerinden gitti
         anim.SetBool("isHover",false);
+        anim.SetBool("isPressed", false);
     }
 
     public void OnPointerUp(PointerEventData eventData) {
